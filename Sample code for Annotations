@@ -1,0 +1,80 @@
+------FIRSTDAYatClass------
+
+package sample1;
+
+import java.util.Arrays;
+
+public class FirstDayAtSchool {
+
+	public boolean res;
+	public void checkmyName(String myname) {
+		
+		if(myname.compareTo("Sanju")==0)
+			res=true;
+		else
+			res=false;
+	}
+	public String[] prepareMyBag() {
+		String[] collegebag= { "Records","NoteBooks","Mobiles"};
+		System.out.println("My College Bag contains:"  +Arrays.toString(collegebag));
+		return collegebag;
+		
+	}
+	public String []addLaptops(){
+		String[]collegebag= {"Records","NoteBooks","Mobiles","Laptops"};
+		System.out.println("Now My College Bag contains:"  +Arrays.toString(collegebag));
+		return collegebag;
+		
+	}
+	public static void main(String[] args) {
+		
+		FirstDayAtSchool fds=new FirstDayAtSchool();
+		String[] cb=fds.prepareMyBag();
+		System.out.println(cb);
+		
+		for(String s:cb)
+			System.out.println("Bag contains:"+s);
+		
+		String[]Laptops=fds.addLaptops();
+		for(String s:Laptops)
+			System.out.println("Laptop contains:"+s);
+	}
+	
+	}
+  
+  
+  ------TESTCASE-------
+  
+  package sample1;
+
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertTrue;
+
+import org.junit.Before;
+import org.junit.Ignore;
+import org.junit.Test;
+
+public class PrepareMyBagTest {
+
+	FirstDayAtSchool school;
+	String[] bag= {"Records","NoteBooks","Mobiles"};
+	@Before
+	public void setUp() throws Exception{
+		System.out.println("Initializing");
+		school =new FirstDayAtSchool();
+		
+	}
+	@Test
+	public void testPrepareMyBag(){
+		System.out.println("Inside testPrepareMyBag()");
+		assertArrayEquals(bag,school.prepareMyBag());
+	
+}
+	
+	@Test
+	public void testCheckMyName(){
+		System.out.println("Inside test check my name()");
+		school.checkmyName("Sanju");
+		assertTrue(school.res);
+	}
+}
